@@ -1,0 +1,9 @@
+import os
+
+os.system(pvcreate /dev/sdb)
+os.system(pvcreate /dev/sdc)
+os.system(vgcreate volumegrp /dev/sdb /dev/sdc)
+os.system(lvcreate  - size 20G  - name logicalvolume volumegrp)
+os.system(mkfs.ext4 /dev/volumegrp/logicalvolume)
+os.system(mkdir lvm-mount-point)
+os.system(mount /dev/volumegrp/logicalvolume /root/arth/lvm-mount-point)
